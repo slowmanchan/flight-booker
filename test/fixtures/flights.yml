@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  origin_id: 1
+  departure_id: 1
+  duration: 1
+  datetime: MyString
+
+two:
+  origin_id: 1
+  departure_id: 1
+  duration: 1
+  datetime: MyString

@@ -1,0 +1,14 @@
+<h1>Bookings</h1>
+<%= form_tag("/bookings/", method: "post") do %>
+<ul>
+  <li>Flight ID: <%= label_tag(:flight_id, @flight_id) %></li>
+  <li>From: <%= @flight.origin.code %></li>
+  <li>To: <%= @flight.departure.code %></li>
+  <li>Name: <%= text_field_tag(:name) %></li>
+  <li>Email: <%= email_field_tag(:emai) %></li>
+  <li><%= submit_tag("Book it") %></li>
+  <li><%= hidden_field_tag(:flight_id, @flight_id) %></li>
+</ul>
+<% end %>
+
+<%= debug(params) %>

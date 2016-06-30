@@ -1,0 +1,29 @@
+<%= form_tag("/", method: "get") do %>
+  <%= label_tag :from %>
+  <%= select_tag(:origin_id, options_for_select(@airport_options)) %>
+  <%= label_tag :to %>
+  <%= select_tag(:destination_id, options_for_select(@airport_options)) %>
+  <%= label_tag :passengers %>
+  <%= select_tag(:passengers, options_for_select(1..4)) %>
+  <%= submit_tag :search, value: "Search" %>
+<% end %>
+
+<%= debug(params) %>
+<% if @flights %>
+
+  <%= "From: #{@airport_origin}" %>
+  <%= "To: #{@airport_destination}" %>
+
+  <%= form_tag("/bookings/new", method: "get") do %>
+  <ul>
+  <% @flights.each do |flight| %>
+    <li>
+      <%= label_tag(:flight, "Flight: #{flight.id} ") %>
+      <%= radio_button_tag(:flight_id, flight.id) %>
+    </li>
+  <% end %>
+  </ul>
+  <%= hidden_field_tag(:passengers, @passengers ) %>
+  <%= submit_tag(:book, value: "Book now!") %>
+  <% end %>
+<% end %>
